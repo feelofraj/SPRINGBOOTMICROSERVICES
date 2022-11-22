@@ -1,0 +1,27 @@
+spring:
+    application:
+        name: GatewayService
+    cloud:
+        gateway:
+            routes:
+                - id: HOME
+                  uri: http://localhost:8080/
+                  predicates:
+                      - Path=/home/**
+                - id: USER
+                  uri: http://localhost:8081/
+                  predicates:
+                    - Path=/user/**
+server:
+    port: 8000
+management:
+    endpoints:
+      web:
+        exposure:
+          include: "*"
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8080/

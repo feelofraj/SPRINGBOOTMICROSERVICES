@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: Gateway Service
+  cloud:
+    gateway:
+      routes:
+        - id: HOME
+          uri: http://localhost:7080/
+          predicates:
+            - Path=/home/**
+        - id: USER
+          uri: http://localhost:7081/
+          predicates:
+            - Path=/user/**
+management:
+  endpoints:
+    web:
+      exposure:
+        includes: "*"
+  security:
+    enabled: false
+server:
+  port: 7000

@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: User_Service
+  datasource:
+    url: jdbc:mysql://localhost:3306/app
+    username: admin
+    password: admin
+server:
+  port: 8001
+  servlet:
+    application-display-name: User_Service
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+    fetch-registry: true
+    register-with-eureka: true
